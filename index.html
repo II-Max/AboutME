@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phạm Văn Chung | Data & Developer Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #050810;
+            --card-bg: rgba(13, 20, 38, 0.6);
+            --accent: #38bdf8;
+            --accent-soft: rgba(56, 189, 248, 0.1);
+            --success: #4ade80;
+            --gold: #fbbf24;
+            --purple: #c084fc;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: var(--bg-dark); 
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(192, 132, 252, 0.05) 0%, transparent 40%);
+            line-height: 1.5;
+        }
+
+        .main-wrapper {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+            max-width: 1280px;
+            width: 100%;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar { display: flex; flex-direction: column; gap: 20px; }
+        
+        .avatar-box {
+            width: 120px; height: 120px;
+            margin: 0 auto 15px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+        }
+        .avatar-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        .sidebar-title { font-size: 0.8rem; font-weight: 800; color: var(--accent); letter-spacing: 1.5px; margin-bottom: 15px; text-transform: uppercase; }
+        
+        .highlight-badge {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .highlight-badge i { color: var(--gold); }
+
+        .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { font-size: 0.75rem; background: var(--border); padding: 5px 12px; border-radius: 12px; color: var(--text-primary); }
+
+        /* --- MAIN CONTENT --- */
+        .content-area { display: flex; flex-direction: column; gap: 30px; }
+
+        .terminal-header {
+            padding: 25px 30px;
+            font-family: 'Fira Code', monospace;
+            background: rgba(0,0,0,0.5);
+            border-radius: 20px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .section-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .section-header h2 { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
+        .line { flex: 1; height: 1px; background: var(--border); }
+
+        /* Grid Layouts for responsive */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+
+        /* Items */
+        .skill-item {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .skill-item:hover { border-color: var(--accent); background: var(--accent-soft); transform: translateY(-3px); }
+        .skill-item i { font-size: 2rem; color: var(--accent); margin-bottom: 10px; }
+        
+        .list-card {
+            display: flex; gap: 15px; padding: 20px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 16px; border: 1px solid var(--border);
+            align-items: flex-start;
+            transition: 0.3s;
+        }
+        .list-card:hover { border-color: var(--text-secondary); background: rgba(255,255,255,0.04); }
+        .list-card i { font-size: 1.4rem; margin-top: 2px; }
+        .list-card h4 { font-size: 1rem; margin-bottom: 5px; color: var(--text-primary); }
+        .list-card p { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* Responsive Mobile */
+        @media (max-width: 900px) {
+            .main-wrapper { grid-template-columns: 1fr; }
+            body { padding: 20px 10px; }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <aside class="sidebar">
+            <div class="glass-card" style="text-align: center;">
+                <div class="avatar-box">
+                    <img src="https://i.ibb.co/XrMv1wHb/z7034827431039-1a0b8929504ab15ad817b9d6997f738c.jpg" alt="Phạm Văn Chung">
+                </div>
+                <h2 style="font-size: 1.4rem; margin-bottom: 5px;">Phạm Văn Chung</h2>
+                <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600; margin-bottom: 20px;">Data Science Specialist</p>
+                
+                <div style="text-align: left;">
+                    <div class="highlight-badge">
+                        <i class="fa-solid fa-graduation-cap"></i> Bằng Giỏi Nghề CNTT ( TH )
+                    </div>
+                    <div class="highlight-badge">
+                        <i class="fa-solid fa-award"></i> 2 Kỳ Học Bổng Loại Giỏi ( TH ) 
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h3 class="sidebar-title">Kỹ thuật khác</h3>
+                <div class="tag-list">
+                    <span class="tag" style="color: var(--accent); border-color: var(--accent);">Firebase</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">Git</span>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h3 class="sidebar-title">Chứng chỉ</h3>
+                <div style="font-size: 0.85rem; display: flex; flex-direction: column; gap: 12px;">
+                    <div><i class="fa-solid fa-certificate" style="color: var(--accent); width: 25px;"></i> MOS Specialist</div>
+                    <div><i class="fa-solid fa-globe" style="color: var(--accent); width: 25px;"></i> NASA Global Participation</div>
+                </div>
+            </div>
+
+            <div class="glass-card" style="display: flex; gap: 20px; justify-content: center; font-size: 1.3rem;">
+                <a href="https://github.com/II-Max" style="color: var(--text-secondary);"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.facebook.com/phamvanchung2127" style="color: var(--text-secondary);"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://discord.gg/pcTBbNeUFg" style="color: var(--text-secondary);"><i class="fa-brands fa-discord"></i></a>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="terminal-header">
+                <h1 style="font-size: 1.8rem; margin-bottom: 8px;">&gt; PHẠM VĂN CHUNG</h1>
+                <div style="font-family: 'Fira Code'; font-size: 0.9rem; color: var(--text-secondary);">
+                    <span style="color: var(--purple);">const</span> profile = {<br>
+                    &nbsp;&nbsp;role: <span style="color: var(--success);">'Data Science'</span>,<br>
+                    &nbsp;&nbsp;focus: <span style="color: var(--success);">'Data & Tech Solutions'</span><span style="display: inline-block; width: 8px; height: 16px; background: var(--accent); animation: blink 1s infinite; vertical-align: middle; margin-left: 5px;"></span><br>
+                    };
+                </div>
+            </div>
+
+            <section>
+                <div class="section-header">
+                    <i class="fa-solid fa-screwdriver-wrench" style="color: var(--accent);"></i>
+                    <h2>CORE TOOLS</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="grid-3">
+                    <div class="skill-item">
+                        <i class="fa-brands fa-python"></i>
+                        <h4>Python</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">Phân tích dữ liệu & Xây dựng mô hình AI.</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fa-solid fa-r"></i>
+                        <h4>R Language</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">Thống kê chuyên sâu & Trực quan hóa.</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <h4>Power BI</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">Dashboarding & Business Intelligence.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <i class="fa-solid fa-trophy" style="color: var(--gold);"></i>
+                    <h2>THÀNH TỰU TIÊU BIỂU</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="grid-2">
+                    <div class="list-card">
+                        <i class="fa-solid fa-lightbulb" style="color: var(--gold);"></i>
+                        <div>
+                            <h4>Giải Nhì KHKT - Ngày hội STEM</h4>
+                            <p>Đoạt giải nhì cuộc thi sáng tạo khoa học kĩ thuật năm học 2023-2024.</p>
+                        </div>
+                    </div>
+
+                    <div class="list-card">
+                        <i class="fa-solid fa-rocket" style="color: #ef4444;"></i>
+                        <div>
+                            <h4>Đội thi tài năng nhất STEM</h4>
+                            <p>Đạt danh hiệu Đội thi tài năng nhất trong ngày hội STEM tại tỉnh Yên Bái 2024-2025.</p>
+                        </div>
+                    </div>
+
+                    <div class="list-card">
+                        <i class="fa-solid fa-robot" style="color: var(--accent);"></i>
+                        <div>
+                            <h4>Nhì Lập Trình KCBOT Tỉnh 2024</h4>
+                            <p>Giải thưởng cấp Tỉnh về lập trình Robot, tối ưu hóa hệ thống tự động.</p>
+                        </div>
+                    </div>
+
+                    <div class="list-card">
+                        <i class="fa-solid fa-gears" style="color: var(--success);"></i>
+                        <div>
+                            <h4>Giải Cuộc thi Tay nghề giỏi CNTT ( TH )</h4>
+                            <p>Chứng minh năng lực thực hành và kỹ năng chuyên môn xuất sắc.</p>
+                        </div>
+                    </div>
+
+                    <div class="list-card">
+                        <i class="fa-solid fa-ranking-star" style="color: var(--purple);"></i>
+                        <div>
+                            <h4>2 Năm Đứng Đầu Điểm Thi HSG</h4>
+                            <p>Hai năm liên tiếp đứng đầu điểm thi Học sinh giỏi cấp Trường.</p>
+                        </div>
+                    </div>
+
+                    <div class="list-card">
+                        <i class="fa-solid fa-medal" style="color: var(--accent);"></i>
+                        <div>
+                            <h4>Cựu HSG Tỉnh Tin Học</h4>
+                            <p>Nền tảng thuật toán vững chắc, đại diện thi đấu cấp Tỉnh môn Tin học.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="list-card" style="grid-column: 1 / -1;">
+                        <i class="fa-solid fa-earth-americas" style="color: var(--accent);"></i>
+                        <div>
+                            <h4>NASA Farm Navigators Award</h4>
+                            <p>Sử dụng dữ liệu khám phá từ NASA (NASA Data Exploration) ứng dụng vào lĩnh vực Nông nghiệp.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <i class="fa-solid fa-folder-open" style="color: var(--accent);"></i>
+                    <h2>DỰ ÁN ĐÃ THỰC HIỆN</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="grid-2">
+                    <div class="list-card" style="align-items: center; justify-content: space-between;">
+                        <div>
+                            <h4 style="color: var(--accent);">AgriMind AI</h4>
+                            <p>Phân tích Big Data khí hậu (Tech stack: Firebase, IoT).</p>
+                        </div>
+                        <span style="font-family: 'Fira Code'; font-size: 0.7rem; color: var(--success); border: 1px solid var(--success); padding: 4px 8px; border-radius: 8px;">Research</span>
+                    </div>
+                    
+                    <div class="list-card" style="align-items: center; justify-content: space-between;">
+                        <div>
+                            <h4 style="color: var(--accent);">STG System</h4>
+                            <p>Máy chấm code tự động quy mô lớn.</p>
+                        </div>
+                        <span style="font-family: 'Fira Code'; font-size: 0.7rem; color: var(--success); border: 1px solid var(--success); padding: 4px 8px; border-radius: 8px;">Dev Ops</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <style>
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</body>
+</html>
