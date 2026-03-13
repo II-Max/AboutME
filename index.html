@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phạm Văn Chung | Data & Developer Portfolio</title>
+    <title>Phạm Văn Chung | Data Scientist & Mentor</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-dark: #050810;
-            --card-bg: rgba(13, 20, 38, 0.6);
-            --accent: #38bdf8;
-            --accent-soft: rgba(56, 189, 248, 0.1);
-            --success: #4ade80;
-            --gold: #fbbf24;
-            --purple: #c084fc;
-            --text-primary: #f8fafc;
+            --bg-dark: #020617;
+            --card-bg: rgba(15, 23, 42, 0.7);
+            --accent: #0ea5e9;
+            --accent-glow: rgba(14, 165, 233, 0.3);
+            --success: #10b981;
+            --gold: #f59e0b;
+            --purple: #8b5cf6;
+            --text-primary: #f1f5f9;
             --text-secondary: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
+            --border: rgba(255, 255, 255, 0.05);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,106 +32,112 @@
             justify-content: center;
             padding: 40px 20px;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(192, 132, 252, 0.05) 0%, transparent 40%);
-            line-height: 1.5;
+                radial-gradient(circle at 0% 0%, rgba(14, 165, 233, 0.1) 0%, transparent 35%),
+                radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.1) 0%, transparent 35%);
+            line-height: 1.6;
         }
 
         .main-wrapper {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 30px;
-            max-width: 1280px;
+            grid-template-columns: 320px 1fr;
+            gap: 25px;
+            max-width: 1200px;
             width: 100%;
         }
 
         .glass-card {
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(15px);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 25px;
-            transition: 0.3s;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
         }
 
         /* --- SIDEBAR --- */
         .sidebar { display: flex; flex-direction: column; gap: 20px; }
         
+        .profile-section { text-align: center; }
         .avatar-box {
-            width: 120px; height: 120px;
-            margin: 0 auto 15px;
-            border-radius: 20px;
+            width: 140px; height: 140px;
+            margin: 0 auto 20px;
+            border-radius: 30px;
             overflow: hidden;
-            border: 2px solid var(--accent);
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
         .avatar-box img { width: 100%; height: 100%; object-fit: cover; }
 
-        .sidebar-title { font-size: 0.8rem; font-weight: 800; color: var(--accent); letter-spacing: 1.5px; margin-bottom: 15px; text-transform: uppercase; }
+        .mentor-badge {
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            color: white;
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .sidebar-title { font-size: 0.75rem; font-weight: 800; color: var(--accent); letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase; }
         
-        .highlight-badge {
+        .info-item {
+            display: flex; align-items: center; gap: 12px;
+            font-size: 0.85rem; margin-bottom: 12px; color: var(--text-secondary);
+        }
+        .info-item i { color: var(--accent); width: 20px; }
+
+        /* --- CONTENT AREA --- */
+        .content-area { display: flex; flex-direction: column; gap: 25px; }
+
+        .hero-terminal {
+            background: #000;
+            padding: 30px;
+            border-radius: 24px;
+            border-top: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-terminal::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent);
+        }
+
+        .section-title { 
+            display: flex; align-items: center; gap: 15px; margin-bottom: 20px; 
+            font-size: 1.1rem; font-weight: 800; color: var(--text-primary);
+        }
+        .section-title span { width: 40px; height: 2px; background: var(--accent); }
+
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+        .feature-card {
             background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
-            padding: 10px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .highlight-badge i { color: var(--gold); }
-
-        .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { font-size: 0.75rem; background: var(--border); padding: 5px 12px; border-radius: 12px; color: var(--text-primary); }
-
-        /* --- MAIN CONTENT --- */
-        .content-area { display: flex; flex-direction: column; gap: 30px; }
-
-        .terminal-header {
-            padding: 25px 30px;
-            font-family: 'Fira Code', monospace;
-            background: rgba(0,0,0,0.5);
+            padding: 24px;
             border-radius: 20px;
-            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
         }
-        
-        .section-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-        .section-header h2 { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
-        .line { flex: 1; height: 1px; background: var(--border); }
-
-        /* Grid Layouts for responsive */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-
-        /* Items */
-        .skill-item {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid var(--border);
-            padding: 20px;
-            border-radius: 16px;
-            text-align: center;
-            transition: 0.3s;
+        .feature-card:hover {
+            border-color: var(--accent);
+            background: rgba(14, 165, 233, 0.05);
+            transform: translateY(-5px);
         }
-        .skill-item:hover { border-color: var(--accent); background: var(--accent-soft); transform: translateY(-3px); }
-        .skill-item i { font-size: 2rem; color: var(--accent); margin-bottom: 10px; }
-        
-        .list-card {
-            display: flex; gap: 15px; padding: 20px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 16px; border: 1px solid var(--border);
-            align-items: flex-start;
-            transition: 0.3s;
-        }
-        .list-card:hover { border-color: var(--text-secondary); background: rgba(255,255,255,0.04); }
-        .list-card i { font-size: 1.4rem; margin-top: 2px; }
-        .list-card h4 { font-size: 1rem; margin-bottom: 5px; color: var(--text-primary); }
-        .list-card p { font-size: 0.85rem; color: var(--text-secondary); }
 
-        /* Responsive Mobile */
-        @media (max-width: 900px) {
+        .skill-tag {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            background: var(--accent-glow);
+            color: var(--accent);
+            border-radius: 6px;
+            margin-right: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 950px) {
             .main-wrapper { grid-template-columns: 1fr; }
-            body { padding: 20px 10px; }
-            .grid-2 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -139,42 +145,34 @@
 
     <div class="main-wrapper">
         <aside class="sidebar">
-            <div class="glass-card" style="text-align: center;">
+            <div class="glass-card profile-section">
                 <div class="avatar-box">
                     <img src="https://i.ibb.co/XrMv1wHb/z7034827431039-1a0b8929504ab15ad817b9d6997f738c.jpg" alt="Phạm Văn Chung">
                 </div>
-                <h2 style="font-size: 1.4rem; margin-bottom: 5px;">Phạm Văn Chung</h2>
-                <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600; margin-bottom: 20px;">Data Science Specialist</p>
+                <div class="mentor-badge">Fulbright STEM Mentor 2026</div>
+                <h2 style="font-size: 1.5rem;">Phạm Văn Chung</h2>
+                <p style="color: var(--accent); font-weight: 600; font-size: 0.9rem;">Data Scientist & Developer</p>
                 
-                <div style="text-align: left;">
-                    <div class="highlight-badge">
-                        <i class="fa-solid fa-graduation-cap"></i> Bằng Giỏi Nghề CNTT ( TH )
-                    </div>
-                    <div class="highlight-badge">
-                        <i class="fa-solid fa-award"></i> 2 Kỳ Học Bổng Loại Giỏi ( TH ) 
-                    </div>
+                <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                    <div class="info-item"><i class="fa-solid fa-star"></i>Mentor Fulbright STEM 2026</div>
+                    <div class="info-item"><i class="fa-solid fa-certificate"></i> NASA Global Participation</div>
+                    <div class="info-item"><i class="fa-solid fa-user-tie"></i> Entrepreneur</div>
                 </div>
             </div>
 
             <div class="glass-card">
-                <h3 class="sidebar-title">Kỹ thuật khác</h3>
-                <div class="tag-list">
-                    <span class="tag" style="color: var(--accent); border-color: var(--accent);">Firebase</span>
-                    <span class="tag">SQL</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">Git</span>
+                <h3 class="sidebar-title">Tech Stack</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Firebase</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Power BI</span>
                 </div>
             </div>
 
-            <div class="glass-card">
-                <h3 class="sidebar-title">Chứng chỉ</h3>
-                <div style="font-size: 0.85rem; display: flex; flex-direction: column; gap: 12px;">
-                    <div><i class="fa-solid fa-certificate" style="color: var(--accent); width: 25px;"></i> MOS Specialist</div>
-                    <div><i class="fa-solid fa-globe" style="color: var(--accent); width: 25px;"></i> NASA Global Participation</div>
-                </div>
-            </div>
-
-            <div class="glass-card" style="display: flex; gap: 20px; justify-content: center; font-size: 1.3rem;">
+            <div class="glass-card" style="display: flex; justify-content: space-around; font-size: 1.2rem;">
                 <a href="https://github.com/II-Max" style="color: var(--text-secondary);"><i class="fa-brands fa-github"></i></a>
                 <a href="https://www.facebook.com/phamvanchung2127" style="color: var(--text-secondary);"><i class="fa-brands fa-facebook"></i></a>
                 <a href="https://discord.gg/pcTBbNeUFg" style="color: var(--text-secondary);"><i class="fa-brands fa-discord"></i></a>
@@ -182,118 +180,88 @@
         </aside>
 
         <main class="content-area">
-            <div class="terminal-header">
-                <h1 style="font-size: 1.8rem; margin-bottom: 8px;">&gt; PHẠM VĂN CHUNG</h1>
-                <div style="font-family: 'Fira Code'; font-size: 0.9rem; color: var(--text-secondary);">
-                    <span style="color: var(--purple);">const</span> profile = {<br>
-                    &nbsp;&nbsp;role: <span style="color: var(--success);">'Data Science'</span>,<br>
-                    &nbsp;&nbsp;focus: <span style="color: var(--success);">'Data & Tech Solutions'</span><span style="display: inline-block; width: 8px; height: 16px; background: var(--accent); animation: blink 1s infinite; vertical-align: middle; margin-left: 5px;"></span><br>
-                    };
+            <div class="hero-terminal">
+                <div style="font-family: 'Fira Code'; font-size: 0.95rem;">
+                    <span style="color: var(--purple);">class</span> <span style="color: var(--gold);">ProfessionalProfile</span>:<br>
+                    &nbsp;&nbsp;name = <span style="color: var(--success);">'Pham Van Chung'</span><br>
+                    &nbsp;&nbsp;role = <span style="color: var(--success);">'Data Scientist'</span><br>
+                    &nbsp;&nbsp;mission = <span style="color: var(--success);">'Applying AI to Agriculture & Industry'</span><br>
+                    &nbsp;&nbsp;mentorship = <span style="color: var(--success);">'Fulbright STEM 2026'</span>
                 </div>
             </div>
 
             <section>
-                <div class="section-header">
-                    <i class="fa-solid fa-screwdriver-wrench" style="color: var(--accent);"></i>
-                    <h2>CORE TOOLS</h2>
-                    <div class="line"></div>
-                </div>
-                <div class="grid-3">
-                    <div class="skill-item">
-                        <i class="fa-brands fa-python"></i>
-                        <h4>Python</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">Phân tích dữ liệu & Xây dựng mô hình AI.</p>
+                <div class="section-title"><span></span> DỰ ÁN TRỌNG ĐIỂM</div>
+                <div class="grid-container">
+                    <div class="feature-card" style="grid-column: 1 / -1; border-left: 4px solid var(--success);">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div>
+                                <h3 style="color: var(--success); margin-bottom: 5px;"> Dự án "Smart Agri" (STKN)</h3>
+                                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 15px;">
+                                    Tác giả dự án nghiên cứu và ứng dụng giải pháp thông minh trong nông nghiệp quy mô lớn.
+                                </p>
+                                <div style="display: flex; gap: 10px;">
+                                    <span class="skill-tag">Công Nghệ</span>
+                                    <span class="skill-tag">Khoa Học Dữ Liệu</span>
+                                    <span class="skill-tag">Công Nghiệp</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-leaf" style="font-size: 2rem; color: var(--success);"></i>
+                        </div>
                     </div>
-                    <div class="skill-item">
-                        <i class="fa-solid fa-r"></i>
-                        <h4>R Language</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">Thống kê chuyên sâu & Trực quan hóa.</p>
+
+                    <div class="feature-card">
+                        <h4 style="color: var(--accent);"><i class="fa-solid fa-code-branch"></i> Data Mining</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 10px;">
+                            DMNPD Project is an automated tool that scans, extracts, and cleans web table data into CSV files.
+							Built with: Python (Pandas, BeautifulSoup4, Requests).
+                        </p>
                     </div>
-                    <div class="skill-item">
-                        <i class="fa-solid fa-chart-simple"></i>
-                        <h4>Power BI</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">Dashboarding & Business Intelligence.</p>
+
+                    <div class="feature-card">
+                        <h4 style="color: var(--gold);"><i class="fa-solid fa-rocket"></i> Smart Farm</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 10px;">
+                            NASA Farm Navigators: Using NASA Data Exploration in Agriculture.
+                        </p>
                     </div>
                 </div>
             </section>
 
             <section>
-                <div class="section-header">
-                    <i class="fa-solid fa-trophy" style="color: var(--gold);"></i>
-                    <h2>THÀNH TỰU TIÊU BIỂU</h2>
-                    <div class="line"></div>
-                </div>
-                <div class="grid-2">
-                    <div class="list-card">
-                        <i class="fa-solid fa-lightbulb" style="color: var(--gold);"></i>
+                <div class="section-title"><span></span> THÀNH TỰU & KINH NGHIỆM</div>
+                <div class="grid-container" style="grid-template-columns: 1fr 1fr;">
+				    <div class="info-item" style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px;">
+                        <i class="fa-solid fa-chalkboard-user" style="font-size: 1.2rem;"></i>
                         <div>
-                            <h4>Giải Nhì KHKT - Ngày hội STEM</h4>
-                            <p>Đoạt giải nhì cuộc thi sáng tạo khoa học kĩ thuật năm học 2023-2024.</p>
+                            <strong>NASA Space Apps Challenge 2025</strong>
+                            <p style="font-size: 0.8rem;">Sử dụng dữ liệu không gian ( NASA GMAO via Open-Meteo ) Hệ thống tự động bằng Python - Node.js - Firebase</p>
                         </div>
                     </div>
-
-                    <div class="list-card">
-                        <i class="fa-solid fa-rocket" style="color: #ef4444;"></i>
+                    <div class="info-item" style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px;">
+                        <i class="fa-solid fa-chalkboard-user" style="font-size: 1.2rem;"></i>
                         <div>
-                            <h4>Đội thi tài năng nhất STEM</h4>
-                            <p>Đạt danh hiệu Đội thi tài năng nhất trong ngày hội STEM tại tỉnh Yên Bái 2024-2025.</p>
+                            <strong>Mentor Fulbright STEM 2026</strong>
+                            <p style="font-size: 0.8rem;">Dẫn dắt và định hướng thế hệ trẻ trong lĩnh vực STEM.</p>
                         </div>
                     </div>
-
-                    <div class="list-card">
-                        <i class="fa-solid fa-robot" style="color: var(--accent);"></i>
+                    <div class="info-item" style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px;">
+                        <i class="fa-solid fa-robot" style="font-size: 1.2rem; color: var(--purple);"></i>
                         <div>
-                            <h4>Nhì Lập Trình KCBOT Tỉnh 2024</h4>
-                            <p>Giải thưởng cấp Tỉnh về lập trình Robot, tối ưu hóa hệ thống tự động.</p>
+                            <strong>Giải Nhì Lập Trình Robotic 2023 - 2024</strong>
+                            <p style="font-size: 0.8rem;">"Cấp Tỉnh - Lập Trình Arduino Giải Mê Cung"</p>
                         </div>
                     </div>
-                    <div class="list-card">
-                        <i class="fa-solid fa-medal" style="color: var(--accent);"></i>
+		                <div class="info-item" style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px;">
+                        <i class="fa-solid fa-robot" style="font-size: 1.2rem; color: var(--purple);"></i>
                         <div>
-                            <h4>Cựu HSG Tỉnh Tin Học</h4>
-                            <p>Nền tảng thuật toán vững chắc, đại diện thi đấu cấp Tỉnh môn Tin học.</p>
+                            <strong>Chứng Nhận Học Sinh Giỏi Tỉnh Bộ Môn Tin Học 2024 - 2025</strong>
+                            <p style="font-size: 0.8rem;">Lập trình thi đấu sử dụng Cpp, Pascal, Python</p>
                         </div>
-                    </div>
-                    
-                    <div class="list-card" style="grid-column: 1 / -1;">
-                        <i class="fa-solid fa-earth-americas" style="color: var(--accent);"></i>
-                        <div>
-                            <h4>NASA Farm Navigators Award</h4>
-                            <p>Sử dụng dữ liệu khám phá từ NASA (NASA Data Exploration) ứng dụng vào lĩnh vực Nông nghiệp.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header">
-                    <i class="fa-solid fa-folder-open" style="color: var(--accent);"></i>
-                    <h2>DỰ ÁN ĐÃ THỰC HIỆN</h2>
-                    <div class="line"></div>
-                </div>
-                <div class="grid-2">
-                    <div class="list-card" style="align-items: center; justify-content: space-between;">
-                        <div>
-                            <h4 style="color: var(--accent);">AgriMind AI</h4>
-                            <p>Phân tích Big Data khí hậu (Tech stack: Firebase, IoT).</p>
-                        </div>
-                        <span style="font-family: 'Fira Code'; font-size: 0.7rem; color: var(--success); border: 1px solid var(--success); padding: 4px 8px; border-radius: 8px;">Research</span>
-                    </div>
-                    
-                    <div class="list-card" style="align-items: center; justify-content: space-between;">
-                        <div>
-                            <h4 style="color: var(--accent);">STG System</h4>
-                            <p>Máy chấm code tự động quy mô lớn.</p>
-                        </div>
-                        <span style="font-family: 'Fira Code'; font-size: 0.7rem; color: var(--success); border: 1px solid var(--success); padding: 4px 8px; border-radius: 8px;">Dev Ops</span>
                     </div>
                 </div>
             </section>
         </main>
     </div>
 
-    <style>
-        @keyframes blink { 50% { opacity: 0; } }
-    </style>
 </body>
 </html>
